@@ -4,7 +4,7 @@ A pixel-faithful reverse engineering of the **AURA Accessibility Enforcer** prod
 
 ---
 
-## 🎯 Project Overview
+##  Project Overview
 
 AURA is a single-page product concept showcasing an on-device accessibility enforcement layer. The landing page demonstrates an interactive simulation of real-time accessibility overlays, profile adaptations, and dynamic content clarification.
 
@@ -12,7 +12,7 @@ AURA is a single-page product concept showcasing an on-device accessibility enfo
 
 ---
 
-## 🚀 Quick Start (Local Run Instructions)
+##  Quick Start (Local Run Instructions)
 
 ### Prerequisites
 - Node.js (v18+) and npm
@@ -38,7 +38,7 @@ AURA is a single-page product concept showcasing an on-device accessibility enfo
 
 ---
 
-## 🕹️ Interactive State Model
+##  Interactive State Model
 
 The application maintains three independent state variables:
 
@@ -63,7 +63,7 @@ The application maintains three independent state variables:
 
 ---
 
-## 📐 Forensic Reference Comparison
+##  Forensic Reference Comparison
 
 | State | Reference Timestamp | Description | Verification Screenshot |
 |---|---|---|---|
