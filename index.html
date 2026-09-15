@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA — Universal Accessibility</title>
+  <meta name="description" content="Aura identifies, cleans, and fixes digital barriers in real-time, bringing inclusive experiences to every application on your machine.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body data-profile="voyager">
+  <!-- Accessible Toast Notice for CTA Demoware -->
+  <div id="demo-toast" class="demo-toast" role="status" aria-live="polite">
+    <span id="demo-toast-message">Demo only — asset not supplied</span>
+  </div>
+
+  <!-- Page Background Radial Glow -->
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Main Site Wrapper -->
+  <div class="page-wrapper">
+    <!-- Header Navigation -->
+    <header class="site-header" id="site-header">
+      <div class="header-inner">
+        <a href="#" class="brand-wordmark" id="wordmark" aria-label="AURA Home">
+          <span class="wordmark-text">AURA</span>
+          <span class="inspection-overlay overlay-wordmark" aria-hidden="true">
+            <span class="overlay-badge">UI ELEMENT</span>
+            <span class="overlay-tag">Optimized</span>
+          </span>
+        </a>
+
+        <div class="header-controls">
+          <!-- Profile Dropdown -->
+          <div class="profile-dropdown-wrapper" id="profile-control">
+            <button 
+              type="button" 
+              class="profile-trigger-btn" 
+              id="profile-trigger" 
+              aria-haspopup="listbox" 
+              aria-expanded="false" 
+              aria-label="Select Accessibility Profile"
+            >
+              <span class="profile-selected-text" id="profile-selected-text">The Voyager (Color Blind)</span>
+              <svg class="dropdown-arrow-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+            <span class="inspection-overlay overlay-pill" aria-hidden="true">
+              <span class="overlay-badge">INTERACTION</span>
+              <span class="overlay-tag">Target Boosted</span>
+            </span>
+
+            <ul class="profile-menu-dropdown" id="profile-menu" role="listbox" aria-label="Accessibility Profiles" tabindex="-1">
+              <li role="option" class="profile-option-item" data-profile="guardian" id="opt-guardian" tabindex="0">
+                The Guardian (Eye Strain)
+              </li>
+              <li role="option" class="profile-option-item" data-profile="beacon" id="opt-beacon" tabindex="0">
+                The Beacon (Low Vision)
+              </li>
+              <li role="option" class="profile-option-item selected" data-profile="voyager" id="opt-voyager" aria-selected="true" tabindex="0">
+                The Voyager (Color Blind)
+              </li>
+            </ul>
+          </div>
+
+          <!-- Enforcer Toggle Button -->
+          <button 
+            type="button" 
+            class="enforce-action-btn" 
+            id="enforce-btn"
+            aria-pressed="false"
+          >
+            <span class="btn-label" id="enforce-btn-label">Simulate Aura Enforcer</span>
+            <span class="inspection-overlay overlay-pill" aria-hidden="true">
+              <span class="overlay-badge">INTERACTION</span>
+              <span class="overlay-tag">Target Boosted</span>
+            </span>
+          </button>
+
+          <!-- Clarify Content Switch -->
+          <div class="clarify-switch-wrapper" id="clarify-control">
+            <button 
+              type="button" 
+              class="clarify-toggle-btn" 
+              id="clarify-toggle-btn" 
+              role="switch" 
+              aria-checked="false" 
+              aria-label="Clarify Content"
+            >
+              <span class="toggle-track">
+                <span class="toggle-thumb"></span>
+              </span>
+              <span class="toggle-label-text">Clarify Content</span>
+            </button>
+            <span class="inspection-overlay overlay-pill" aria-hidden="true">
+              <span class="overlay-badge">INTERACTION</span>
+              <span class="overlay-tag">Target Boosted</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero-section" id="hero-section">
+        <div class="hero-container">
+          <!-- Left Hero Column -->
+          <div class="hero-left-column">
+            <!-- Badge -->
+            <div class="hero-badge" id="hero-badge">
+              <span class="badge-text">Aura Enforcer | Alpha 0.1</span>
+            </div>
+
+            <!-- Dynamic Heading -->
+            <h1 class="hero-heading" id="hero-heading">
+              <span class="heading-line line-1" id="heading-line-1">The Guardian of</span>
+              <span class="heading-line line-2" id="heading-line-2"><span class="gradient-accent">Accessibility.</span></span>
+              <span class="inspection-overlay overlay-heading" aria-hidden="true">
+                <span class="overlay-badge">STRUCTURE</span>
+                <span class="overlay-tag">Readable</span>
+              </span>
+            </h1>
+
+            <!-- Dynamic Paragraph -->
+            <p class="hero-body" id="hero-body">
+              Intelligence that lives between your windows. Aura identifies, cleans, and fixes digital barriers in real-time, bringing inclusive experiences to every application on your machine.
+            </p>
+
+            <!-- CTA Button Row -->
+            <div class="hero-cta-row" id="hero-cta-row">
+              <button type="button" class="cta-btn primary-cta" id="cta-download">
+                <span class="cta-label">Download for Windows</span>
+                <span class="inspection-overlay overlay-cta" aria-hidden="true">
+                  <span class="overlay-badge">INTERACTION</span>
+                  <span class="overlay-tag">Target Boosted</span>
+                </span>
+              </button>
+              <button type="button" class="cta-btn secondary-cta" id="cta-vision">
+                <span class="cta-label">Watch the Vision</span>
+                <span class="inspection-overlay overlay-cta" aria-hidden="true">
+                  <span class="overlay-badge">INTERACTION</span>
+                  <span class="overlay-tag">Target Boosted</span>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Hero Column: Floating Status Card -->
+          <div class="hero-right-column">
+            <div class="status-card-outer" id="status-card-outer">
+              <div class="status-card" id="status-card">
+                <div class="status-row">Scanning: <span class="status-highlight">Notepad.exe</span></div>
+                <div class="status-row">Fixes Applied: <span class="status-highlight">12</span></div>
+                <div class="status-row mode-row">Mode: <span class="mode-badge">ENFORCING</span></div>
+                <span class="inspection-overlay overlay-card" aria-hidden="true">
+                  <span class="overlay-badge">UI ELEMENT</span>
+                  <span class="overlay-tag">Optimized</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Universal Empowerment Section -->
+      <section class="empowerment-section" id="empowerment-section">
+        <div class="empowerment-container">
+          <div class="section-header-block">
+            <h2 class="section-title" id="section-heading">
+              Universal Empowerment
+              <span class="inspection-overlay overlay-section-title" aria-hidden="true">
+                <span class="overlay-badge">STRUCTURE</span>
+              </span>
+            </h2>
+            <p class="section-subtitle" id="section-subtitle">
+              <span>For the web, legacy apps, and everything in between.</span>
+              <span class="inspection-overlay overlay-subtitle" aria-hidden="true">
+                <span class="overlay-badge">CONTENT BOX</span>
+                <span class="overlay-tag">Readable</span>
+              </span>
+            </p>
+          </div>
+
+          <!-- Three Feature Cards in One Row -->
+          <div class="feature-cards-grid" id="feature-cards-grid">
+            <!-- Feature Card 1 -->
+            <div class="feature-card" id="feature-card-1">
+              <span class="inspection-overlay overlay-feature-card" aria-hidden="true">
+                <span class="overlay-badge">CONTENT BOX</span>
+                <span class="overlay-tag">Semantic</span>
+              </span>
+              <h3 class="feature-card-title" id="feature-title-1">
+                Visual Enforcement
+                <span class="inspection-overlay overlay-card-title" aria-hidden="true">
+                  <span class="overlay-badge">STRUCTURE</span>
+                  <span class="overlay-tag">Readable</span>
+                </span>
+              </h3>
+              <p class="feature-card-desc">
+                Auto-corrects low contrast, identifies unlabelled icons, and enlarges tiny touch targets.
+              </p>
+            </div>
+
+            <!-- Feature Card 2 -->
+            <div class="feature-card" id="feature-card-2">
+              <span class="inspection-overlay overlay-feature-card" aria-hidden="true">
+                <span class="overlay-badge">CONTENT BOX</span>
+                <span class="overlay-tag">Semantic</span>
+              </span>
+              <h3 class="feature-card-title" id="feature-title-2">
+                Aura Narrative
+                <span class="inspection-overlay overlay-card-title" aria-hidden="true">
+                  <span class="overlay-badge">STRUCTURE</span>
+                  <span class="overlay-tag">Readable</span>
+                </span>
+              </h3>
+              <p class="feature-card-desc">
+                A smart, localized TTS engine that describes the screen as you move, without the noise of traditional screen readers.
+              </p>
+            </div>
+
+            <!-- Feature Card 3 -->
+            <div class="feature-card" id="feature-card-3">
+              <span class="inspection-overlay overlay-feature-card" aria-hidden="true">
+                <span class="overlay-badge">CONTENT BOX</span>
+                <span class="overlay-tag">Semantic</span>
+              </span>
+              <h3 class="feature-card-title" id="feature-title-3">
+                Vision Core
+                <span class="inspection-overlay overlay-card-title" aria-hidden="true">
+                  <span class="overlay-badge">STRUCTURE</span>
+                  <span class="overlay-tag">Readable</span>
+                </span>
+              </h3>
+              <p class="feature-card-desc">
+                100% On-device AI. Your screen data never leaves your computer. Privacy is an accessibility right.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Page Footer -->
+    <footer class="site-footer" id="site-footer">
+      <div class="footer-container">
+        <p class="footer-text">
+          © 2026 Aura Systems. Part of the Tworam Ecosystem.
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
