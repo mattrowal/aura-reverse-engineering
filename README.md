@@ -1,6 +1,6 @@
 # AURA — Accessibility Enforcer (Interactive Simulation)
 
-A pixel-faithful reverse engineering of the **AURA Accessibility Enforcer** product landing page and interactive simulation, reconstructed directly from the screen recording `Aura.mp4`.
+A pixel-faithful reverse engineering of the **AURA Accessibility Enforcer** product landing page and interactive simulation.
 
 ---
 
