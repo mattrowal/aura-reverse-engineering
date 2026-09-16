@@ -1,15 +1,15 @@
 /* ==========================================================================
    AURA — Pure Production Interface Styles
-   Pixel-Refined from Reference Video (Aura.mp4)
+   Enhanced with Accessibility Profiles, Profile Information Panel & Reset
    ========================================================================== */
 
 :root {
-  /* Core Backgrounds */
-  --bg-primary: #020315;
-  --bg-surface: rgba(10, 16, 32, 0.7);
-  --bg-surface-hover: rgba(20, 30, 56, 0.85);
-  --bg-card: rgba(8, 14, 30, 0.72);
-  --bg-feature-card: rgba(10, 16, 34, 0.55);
+  /* Core Backgrounds - Refined slightly lighter dark palette */
+  --bg-primary: #0D1424;
+  --bg-surface: rgba(20, 30, 52, 0.72);
+  --bg-surface-hover: rgba(30, 44, 76, 0.85);
+  --bg-card: rgba(18, 27, 48, 0.75);
+  --bg-feature-card: rgba(20, 30, 54, 0.58);
 
   /* Typography */
   --font-primary: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -28,39 +28,477 @@
 
   /* Status Toggle */
   --toggle-track-off: #252E3E;
-  --toggle-track-on: #22C55E;
+  --toggle-track-on: #0284C7;
 
   /* Profile Accents */
-  --accent-voyager: #3B82F6;
+  --accent-voyager: #0284C7;
   --accent-beacon: #FBBF24;
-  --accent-guardian: #10B981;
+  --accent-guardian: #14B8A6;
 
-  /* Active Enforcer Button Accent: Green Active State */
-  --active-enforce-bg: #22C55E;
+  /* Active Enforcer Button Accent */
+  --active-enforce-bg: #0284C7;
   --active-enforce-text: #FFFFFF;
-  --active-enforce-glow: rgba(34, 197, 94, 0.45);
+  --active-enforce-glow: rgba(2, 132, 199, 0.45);
 
-  /* Inspection Overlays */
-  --overlay-border-color: #3B82F6;
-  --overlay-badge-bg: #3B82F6;
+  /* Inspection Overlays Default (The Voyager) */
+  --overlay-border-color: #0284C7;
+  --overlay-badge-bg: #0284C7;
   --overlay-badge-text: #FFFFFF;
-  --overlay-glow: rgba(59, 130, 246, 0.28);
+  --overlay-glow: rgba(2, 132, 199, 0.28);
+
+  /* Hero Badge Defaults */
+  --badge-border: rgba(2, 132, 199, 0.4);
+  --badge-bg: rgba(16, 26, 52, 0.65);
+  --badge-text: #38BDF8;
 }
 
-/* Beacon Profile Theme */
+/* ==========================================================================
+   Profile 1: The Guardian (Eye Strain)
+   - Visual Identity: Soft sage/teal green
+   - NO BLUE as main accent
+   - Softer contrast, calming glow, reduced eye fatigue
+   ========================================================================== */
+body[data-profile="guardian"] {
+  /* Soft matte dark slate instead of harsh pitch black */
+  --bg-primary: #111A24;
+  --bg-surface: rgba(24, 36, 50, 0.78);
+  --bg-surface-hover: rgba(34, 50, 70, 0.90);
+  --bg-card: rgba(22, 34, 48, 0.88);
+  --bg-feature-card: rgba(22, 34, 48, 0.72);
+
+  /* Softer text contrast (reducing glare and eye fatigue while maintaining WCAG AA) */
+  --text-primary: #E2E8F0;
+  --text-muted: #94A3B8;
+  --text-subtle: #64748B;
+
+  /* Calming low-glare teal/green accents */
+  --overlay-border-color: #14B8A6;
+  --overlay-badge-bg: #14B8A6;
+  --overlay-badge-text: #042F2E;
+  --overlay-glow: rgba(20, 184, 166, 0.25);
+
+  --btn-primary-bg: #0D9488;
+  --btn-primary-glow: rgba(13, 148, 136, 0.45);
+  --btn-secondary-border: rgba(20, 184, 166, 0.28);
+
+  --active-enforce-bg: #0D9488;
+  --active-enforce-text: #FFFFFF;
+  --active-enforce-glow: rgba(13, 148, 136, 0.45);
+
+  --toggle-track-on: #0D9488;
+  --gradient-wordmark: linear-gradient(135deg, #99F6E4 0%, #5EEAD4 50%, #2DD4BF 100%);
+  --gradient-accent: linear-gradient(135deg, #5EEAD4 0%, #2DD4BF 50%, #10B981 100%);
+
+  --badge-border: rgba(20, 184, 166, 0.35);
+  --badge-bg: rgba(13, 148, 136, 0.14);
+  --badge-text: #5EEAD4;
+}
+
+/* Guardian: Calming soft teal/green glow behind panel */
+body[data-profile="guardian"] .bg-glow {
+  opacity: 0.95;
+  filter: blur(75px);
+  background: radial-gradient(
+    ellipse 750px 560px at 540px 320px,
+    rgba(20, 184, 166, 0.46) 0%,
+    rgba(20, 184, 166, 0.35) 22%,
+    rgba(13, 148, 136, 0.20) 42%,
+    rgba(15, 118, 110, 0.09) 62%,
+    rgba(17, 26, 36, 0.035) 80%,
+    rgba(17, 26, 36, 0.005) 92%,
+    transparent 100%
+  );
+}
+
+body[data-profile="guardian"] .hero-heading {
+  color: #E2E8F0;
+}
+
+body[data-profile="guardian"] .hero-body {
+  color: #94A3B8;
+}
+
+body[data-profile="guardian"] .primary-cta {
+  background: #0D9488;
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(13, 148, 136, 0.35);
+}
+
+body[data-profile="guardian"] .primary-cta:hover {
+  background: #0F766E;
+  box-shadow: 0 12px 30px rgba(13, 148, 136, 0.5);
+}
+
+body[data-profile="guardian"] .secondary-cta {
+  border-color: rgba(20, 184, 166, 0.28);
+}
+
+body[data-profile="guardian"] .secondary-cta:hover {
+  border-color: #2DD4BF;
+  color: #5EEAD4;
+}
+
+body[data-profile="guardian"] .status-card,
+body[data-profile="guardian"] .profile-info-card {
+  border: 1px solid rgba(20, 184, 166, 0.28);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 4px 40px rgba(20, 184, 166, 0.16);
+}
+
+body[data-profile="guardian"] .status-highlight {
+  color: #5EEAD4;
+}
+
+body[data-profile="guardian"] .mode-badge {
+  border-color: rgba(20, 184, 166, 0.35);
+  background: rgba(20, 184, 166, 0.12);
+  color: #5EEAD4;
+}
+
+body[data-profile="guardian"] .hero-badge {
+  background: rgba(13, 148, 136, 0.14);
+  border-color: rgba(20, 184, 166, 0.35);
+}
+
+body[data-profile="guardian"] .badge-text {
+  color: #5EEAD4;
+}
+
+body[data-profile="guardian"] .info-card-tag {
+  color: #5EEAD4;
+  background: rgba(20, 184, 166, 0.12);
+  border-color: rgba(20, 184, 166, 0.25);
+}
+
+body[data-profile="guardian"] .status-dot {
+  background: #14B8A6;
+  box-shadow: 0 0 8px rgba(20, 184, 166, 0.6);
+}
+
+body[data-profile="guardian"] .info-reset-btn {
+  border-color: rgba(20, 184, 166, 0.3);
+  color: #99F6E4;
+}
+
+body[data-profile="guardian"] .info-reset-btn:hover {
+  border-color: #14B8A6;
+  color: #FFFFFF;
+  background: rgba(20, 184, 166, 0.15);
+}
+
+body[data-profile="guardian"] .inspection-overlay {
+  border-width: 1px;
+  box-shadow: 0 0 8px rgba(20, 184, 166, 0.2);
+}
+
+/* ==========================================================================
+   Profile 2: The Beacon (Low Vision)
+   - Visual Identity: High-visibility vibrant radiant gold/amber
+   - Maximum contrast and enlarged elements
+   ========================================================================== */
 body[data-profile="beacon"] {
   --overlay-border-color: #FBBF24;
   --overlay-badge-bg: #FBBF24;
   --overlay-badge-text: #0A0D18;
-  --overlay-glow: rgba(251, 191, 36, 0.28);
+  --overlay-glow: rgba(251, 191, 36, 0.38);
+
+  --btn-primary-bg: #FBBF24;
+  --btn-primary-glow: rgba(245, 158, 11, 0.5);
+
+  --active-enforce-bg: #F59E0B;
+  --active-enforce-text: #0A0D18;
+  --active-enforce-glow: rgba(245, 158, 11, 0.5);
+
+  --toggle-track-on: #F59E0B;
+  --gradient-wordmark: linear-gradient(135deg, #FEF08A 0%, #FBBF24 100%);
+  --gradient-accent: linear-gradient(135deg, #FEF08A 0%, #FBBF24 50%, #F59E0B 100%);
+
+  --badge-border: rgba(251, 191, 36, 0.65);
+  --badge-bg: rgba(251, 191, 36, 0.16);
+  --badge-text: #FEF08A;
 }
 
-/* Guardian Profile Theme */
-body[data-profile="guardian"] {
-  --overlay-border-color: #10B981;
-  --overlay-badge-bg: #10B981;
+/* Beacon: Vibrant warm amber/gold glow behind panel */
+body[data-profile="beacon"] .bg-glow {
+  opacity: 0.95;
+  filter: blur(75px);
+  background: radial-gradient(
+    ellipse 750px 560px at 540px 320px,
+    rgba(245, 158, 11, 0.28) 0%,
+    rgba(245, 158, 11, 0.20) 22%,
+    rgba(217, 119, 6, 0.11) 42%,
+    rgba(180, 83, 9, 0.05) 62%,
+    rgba(14, 20, 34, 0.02) 80%,
+    rgba(14, 20, 34, 0.003) 92%,
+    transparent 100%
+  );
+}
+
+/* Beacon: Increased body text size */
+body[data-profile="beacon"] .hero-body {
+  font-size: 24px;
+  line-height: 1.72;
+  max-width: 650px;
+}
+
+body[data-profile="beacon"] .feature-card-desc {
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+body[data-profile="beacon"] .status-row {
+  font-size: 21px;
+}
+
+body[data-profile="beacon"] .section-subtitle {
+  font-size: 23px;
+}
+
+body[data-profile="beacon"] .badge-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FEF08A;
+}
+
+/* Beacon: Increased button size & click targets */
+body[data-profile="beacon"] .cta-btn {
+  height: 72px;
+  font-size: 20px;
+  font-weight: 800;
+  border-radius: 18px;
+}
+
+body[data-profile="beacon"] .primary-cta {
+  min-width: 290px;
+  background: #FBBF24;
+  color: #0A0D18;
+  font-weight: 800;
+  box-shadow: 0 10px 32px rgba(245, 158, 11, 0.45);
+}
+
+body[data-profile="beacon"] .primary-cta:hover {
+  background: #F59E0B;
+  color: #0A0D18;
+  box-shadow: 0 14px 38px rgba(245, 158, 11, 0.62);
+}
+
+body[data-profile="beacon"] .secondary-cta {
+  min-width: 240px;
+  border: 2px solid rgba(251, 191, 36, 0.6);
+  font-weight: 700;
+}
+
+body[data-profile="beacon"] .secondary-cta:hover {
+  border-color: #FBBF24;
+  color: #FEF08A;
+}
+
+body[data-profile="beacon"] .profile-trigger-btn,
+body[data-profile="beacon"] .reset-access-btn,
+body[data-profile="beacon"] .enforce-action-btn,
+body[data-profile="beacon"] .clarify-toggle-btn {
+  height: 60px;
+  font-size: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Beacon: Increased spacing */
+body[data-profile="beacon"] .hero-cta-row {
+  gap: 28px;
+}
+
+body[data-profile="beacon"] .feature-card {
+  padding: 44px 38px;
+}
+
+body[data-profile="beacon"] .status-card {
+  padding: 28px 32px;
+  height: 172px;
+}
+
+/* Beacon: Make important UI elements easier to see */
+body[data-profile="beacon"] .profile-trigger-btn,
+body[data-profile="beacon"] .reset-access-btn,
+body[data-profile="beacon"] .enforce-action-btn,
+body[data-profile="beacon"] .clarify-toggle-btn,
+body[data-profile="beacon"] .status-card,
+body[data-profile="beacon"] .profile-info-card,
+body[data-profile="beacon"] .feature-card {
+  border: 2px solid rgba(251, 191, 36, 0.65);
+}
+
+body[data-profile="beacon"] .status-card,
+body[data-profile="beacon"] .profile-info-card {
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 4px 40px rgba(245, 158, 11, 0.13);
+}
+
+body[data-profile="beacon"] .status-highlight {
+  color: #FEF08A;
+  font-weight: 700;
+}
+
+body[data-profile="beacon"] .mode-badge {
+  border-color: #FBBF24;
+  background: rgba(251, 191, 36, 0.22);
+  color: #FEF08A;
+}
+
+body[data-profile="beacon"] .hero-badge {
+  background: rgba(251, 191, 36, 0.16);
+  border: 1.5px solid rgba(251, 191, 36, 0.65);
+}
+
+body[data-profile="beacon"] .info-card-tag {
+  color: #0A0D18;
+  background: #FBBF24;
+  border-color: #FBBF24;
+  font-weight: 800;
+}
+
+body[data-profile="beacon"] .status-dot {
+  background: #FBBF24;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.7);
+}
+
+body[data-profile="beacon"] .info-reset-btn {
+  border: 1.5px solid rgba(251, 191, 36, 0.5);
+  color: #FEF08A;
+  font-weight: 700;
+}
+
+body[data-profile="beacon"] .info-reset-btn:hover {
+  border-color: #FBBF24;
+  color: #0A0D18;
+  background: #FBBF24;
+}
+
+body[data-profile="beacon"] .profile-trigger-btn:hover,
+body[data-profile="beacon"] .reset-access-btn:hover,
+body[data-profile="beacon"] .enforce-action-btn:hover,
+body[data-profile="beacon"] .clarify-toggle-btn:hover,
+body[data-profile="beacon"] .feature-card:hover {
+  border-color: #FBBF24;
+}
+
+body[data-profile="beacon"] :focus-visible {
+  outline: 3px solid #FBBF24 !important;
+  outline-offset: 3px !important;
+}
+
+body[data-profile="beacon"] .inspection-overlay {
+  border-width: 2.5px;
+}
+
+body[data-profile="beacon"] .overlay-badge {
+  font-size: 11.5px;
+  font-weight: 900;
+  padding: 3px 9px;
+}
+
+/* ==========================================================================
+   Profile 3: The Voyager (Color Blind)
+   - Visual Identity: Electric Blue & Cyan
+   - Color-blind safe palette (Wong / Okabe-Ito / Tol standards)
+   ========================================================================== */
+body[data-profile="voyager"] {
+  --overlay-border-color: #0284C7;
+  --overlay-badge-bg: #0284C7;
   --overlay-badge-text: #FFFFFF;
-  --overlay-glow: rgba(16, 185, 129, 0.28);
+  --overlay-glow: rgba(2, 132, 199, 0.35);
+
+  --btn-primary-bg: #2563EB;
+  --btn-primary-glow: rgba(37, 99, 235, 0.45);
+  --btn-secondary-border: rgba(56, 189, 248, 0.25);
+
+  --active-enforce-bg: #0284C7;
+  --active-enforce-text: #FFFFFF;
+  --active-enforce-glow: rgba(2, 132, 199, 0.45);
+
+  --toggle-track-on: #0284C7;
+  --gradient-wordmark: linear-gradient(135deg, #7FA7F8 0%, #B896F8 100%);
+  --gradient-accent: linear-gradient(135deg, #38BDF8 0%, #2563EB 50%, #7C3AED 100%);
+
+  --badge-border: rgba(2, 132, 199, 0.4);
+  --badge-bg: rgba(16, 26, 52, 0.65);
+  --badge-text: #38BDF8;
+}
+
+/* Voyager: Matching electric blue/cyan glow behind panel */
+body[data-profile="voyager"] .bg-glow {
+  opacity: 0.95;
+  filter: blur(75px);
+  background: radial-gradient(
+    ellipse 750px 560px at 540px 320px,
+    rgba(2, 132, 199, 0.52) 0%,
+    rgba(2, 132, 199, 0.40) 22%,
+    rgba(37, 99, 235, 0.24) 42%,
+    rgba(30, 58, 138, 0.11) 62%,
+    rgba(13, 20, 36, 0.04) 80%,
+    rgba(13, 20, 36, 0.005) 92%,
+    transparent 100%
+  );
+}
+
+body[data-profile="voyager"] .status-card,
+body[data-profile="voyager"] .profile-info-card {
+  border: 1px solid rgba(2, 132, 199, 0.28);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 4px 40px rgba(2, 132, 199, 0.18);
+}
+
+body[data-profile="voyager"] .status-highlight {
+  color: #38BDF8;
+}
+
+body[data-profile="voyager"] .mode-badge {
+  border-color: rgba(2, 132, 199, 0.4);
+  background: rgba(2, 132, 199, 0.14);
+  color: #38BDF8;
+}
+
+body[data-profile="voyager"] .hero-badge {
+  background: rgba(16, 26, 52, 0.65);
+  border-color: rgba(2, 132, 199, 0.4);
+}
+
+body[data-profile="voyager"] .badge-text {
+  color: #38BDF8;
+}
+
+body[data-profile="voyager"] .primary-cta {
+  background: #2563EB;
+  color: #FFFFFF;
+  box-shadow: 0 10px 32px rgba(37, 99, 235, 0.45);
+}
+
+body[data-profile="voyager"] .primary-cta:hover {
+  background: #1D4ED8;
+  box-shadow: 0 14px 38px rgba(37, 99, 235, 0.6);
+}
+
+body[data-profile="voyager"] .secondary-cta {
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+body[data-profile="voyager"] .secondary-cta:hover {
+  border-color: #38BDF8;
+  color: #BAE6FD;
+}
+
+body[data-profile="voyager"] .info-card-tag {
+  color: #38BDF8;
+  background: rgba(2, 132, 199, 0.12);
+  border-color: rgba(2, 132, 199, 0.28);
+}
+
+body[data-profile="voyager"] .status-dot {
+  background: #0284C7;
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.5);
+}
+
+body[data-profile="voyager"] .info-reset-btn:hover {
+  border-color: #38BDF8;
+  color: #38BDF8;
+  background: rgba(2, 132, 199, 0.1);
 }
 
 /* Global Reset */
@@ -84,6 +522,7 @@ body {
   position: relative;
   overflow-x: hidden;
   background-color: var(--bg-primary);
+  transition: background-color 0.28s ease, color 0.28s ease;
 }
 
 /* Main Site Wrapper */
@@ -142,13 +581,14 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+  transition: background 0.28s ease;
 }
 
 /* Header Controls Right */
 .header-controls {
   display: flex;
   align-items: center;
-  gap: 31px;
+  gap: 20px;
 }
 
 /* Profile Selector Dropdown */
@@ -159,9 +599,9 @@ body {
 .profile-trigger-btn {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   height: 54px;
-  padding: 0 24px;
+  padding: 0 22px;
   border-radius: 9999px;
   background: var(--bg-surface);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -170,7 +610,7 @@ body {
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s, height 0.2s, font-size 0.2s;
   outline: none;
 }
 
@@ -182,6 +622,11 @@ body {
 
 .profile-trigger-btn:focus-visible {
   box-shadow: 0 0 0 2px var(--btn-primary-bg);
+}
+
+.profile-trigger-glyph {
+  font-size: 16px;
+  line-height: 1;
 }
 
 .dropdown-arrow-icon {
@@ -200,7 +645,7 @@ body {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  width: 250px;
+  width: 260px;
   background: #FFFFFF;
   border-radius: 14px;
   padding: 6px;
@@ -220,6 +665,9 @@ body {
 }
 
 .profile-option-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 11px 16px;
   border-radius: 8px;
   font-size: 14px;
@@ -230,6 +678,12 @@ body {
   outline: none;
 }
 
+.profile-glyph {
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
 .profile-option-item:hover,
 .profile-option-item:focus-visible {
   background-color: #F1F5F9;
@@ -237,9 +691,52 @@ body {
 }
 
 .profile-option-item.selected {
-  font-weight: 600;
+  font-weight: 700;
   background-color: #E2E8F0;
-  color: #020315;
+  color: var(--overlay-border-color);
+}
+
+/* Reset Accessibility Action Button */
+.reset-access-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 54px;
+  padding: 0 20px;
+  border-radius: 9999px;
+  font-family: var(--font-primary);
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.reset-access-btn:hover {
+  background: var(--bg-surface-hover);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--text-primary);
+}
+
+.reset-access-btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--btn-primary-bg);
+  color: var(--text-primary);
+}
+
+.reset-icon {
+  width: 17px;
+  height: 17px;
+  color: currentColor;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.reset-access-btn:hover .reset-icon {
+  transform: rotate(-45deg);
 }
 
 /* Enforcement Action Button */
@@ -249,7 +746,7 @@ body {
   justify-content: center;
   position: relative;
   height: 54px;
-  padding: 0 28px;
+  padding: 0 26px;
   border-radius: 9999px;
   font-family: var(--font-primary);
   font-size: 15px;
@@ -260,6 +757,13 @@ body {
   background: var(--bg-surface);
   color: var(--text-primary);
   transition: all 0.2s ease;
+}
+
+.enforce-state-indicator {
+  margin-right: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .enforce-action-btn:hover {
@@ -288,9 +792,9 @@ body {
 .clarify-toggle-btn {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   height: 54px;
-  padding: 0 22px;
+  padding: 0 20px;
   border-radius: 9999px;
   background: var(--bg-surface);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -309,9 +813,9 @@ body {
 }
 
 .toggle-track {
-  width: 38px;
-  height: 20px;
-  border-radius: 10px;
+  width: 42px;
+  height: 22px;
+  border-radius: 11px;
   background: var(--toggle-track-off);
   position: relative;
   transition: background-color 0.22s ease;
@@ -321,12 +825,34 @@ body {
 }
 
 .toggle-thumb {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: #FFFFFF;
   transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
+  z-index: 2;
+}
+
+.toggle-icon {
+  position: absolute;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.toggle-icon-off {
+  right: 7px;
+  color: #94A3B8;
+  display: block;
+}
+
+.toggle-icon-on {
+  left: 7px;
+  color: #FFFFFF;
+  display: none;
 }
 
 .clarify-toggle-btn.active .toggle-track {
@@ -334,7 +860,15 @@ body {
 }
 
 .clarify-toggle-btn.active .toggle-thumb {
-  transform: translateX(18px);
+  transform: translateX(20px);
+}
+
+.clarify-toggle-btn.active .toggle-icon-off {
+  display: none;
+}
+
+.clarify-toggle-btn.active .toggle-icon-on {
+  display: block;
 }
 
 .toggle-label-text {
@@ -345,17 +879,50 @@ body {
   user-select: none;
 }
 
+.toggle-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.2s ease;
+}
+
+.clarify-toggle-btn.active .toggle-status-badge {
+  background: rgba(2, 132, 199, 0.25);
+  color: #FFFFFF;
+  border-color: rgba(2, 132, 199, 0.5);
+}
+
+body[data-profile="beacon"] .clarify-toggle-btn.active .toggle-status-badge {
+  background: rgba(251, 191, 36, 0.3);
+  color: #FBBF24;
+  border-color: #FBBF24;
+}
+
+body[data-profile="guardian"] .clarify-toggle-btn.active .toggle-status-badge {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6EE7B7;
+  border-color: #10B981;
+}
+
 /* ==========================================================================
-   Hero Section Layout (Anchored at exact reference coordinates)
+   Hero Section Layout (Anchored coordinates)
    ========================================================================== */
 
 .hero-section {
   position: relative;
   width: 100%;
-  height: 747px;
+  height: 770px;
 }
 
-/* Soft Blue Radial Glow Centered Behind and Around Status Card */
+/* Soft Radial Glow Centered Behind and Around Status Card */
 .bg-glow {
   position: absolute;
   left: 900px;
@@ -364,16 +931,18 @@ body {
   height: 840px;
   pointer-events: none;
   background: radial-gradient(
-    ellipse 560px 390px at 520px 410px,
-    rgba(30, 62, 130, 0.58) 0%,
-    rgba(22, 46, 108, 0.44) 32%,
-    rgba(14, 32, 82, 0.25) 58%,
-    rgba(7, 16, 50, 0.10) 78%,
-    rgba(2, 4, 25, 0.02) 92%,
+    ellipse 750px 560px at 540px 320px,
+    rgba(2, 132, 199, 0.52) 0%,
+    rgba(2, 132, 199, 0.40) 22%,
+    rgba(37, 99, 235, 0.24) 42%,
+    rgba(30, 58, 138, 0.11) 62%,
+    rgba(13, 20, 36, 0.04) 80%,
+    rgba(13, 20, 36, 0.005) 92%,
     transparent 100%
   );
-  filter: blur(40px);
+  filter: blur(75px);
   z-index: 0;
+  transition: opacity 0.35s ease, background 0.35s ease, filter 0.35s ease;
 }
 
 .hero-container {
@@ -398,16 +967,18 @@ body {
   height: 34px;
   padding: 0 18px;
   border-radius: 9999px;
-  background: rgba(16, 26, 52, 0.55);
-  border: 1px solid rgba(59, 130, 246, 0.32);
+  background: var(--badge-bg, rgba(16, 26, 52, 0.55));
+  border: 1px solid var(--badge-border, rgba(59, 130, 246, 0.32));
   margin-bottom: 54px;
+  transition: font-size 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .badge-text {
   font-size: 13.5px;
   font-weight: 600;
-  color: #60A5FA;
+  color: var(--badge-text, #60A5FA);
   letter-spacing: 0.5px;
+  transition: color 0.2s ease;
 }
 
 /* Hero Heading: y_rel ≈ 306px */
@@ -419,11 +990,11 @@ body {
   font-weight: 800;
   line-height: 1.12;
   letter-spacing: -0.02em;
-  color: #FFFFFF;
+  color: var(--text-primary);
   display: inline-flex;
   flex-direction: column;
   margin-bottom: 38px;
-  transition: letter-spacing 0.2s ease, line-height 0.2s ease;
+  transition: letter-spacing 0.2s ease, line-height 0.2s ease, color 0.25s ease;
 }
 
 .hero-heading .heading-line {
@@ -443,6 +1014,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+  transition: background 0.28s ease;
 }
 
 /* Hero Body Paragraph: y_rel ≈ 528px */
@@ -452,8 +1024,8 @@ body {
   line-height: 1.62;
   color: var(--text-muted);
   max-width: 610px;
-  margin-bottom: 108px;
-  transition: letter-spacing 0.2s ease, line-height 0.2s ease;
+  margin-bottom: 96px;
+  transition: font-size 0.25s ease, letter-spacing 0.2s ease, line-height 0.2s ease, color 0.25s ease;
 }
 
 /* Clarified Body State */
@@ -467,6 +1039,7 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
+  transition: gap 0.25s ease;
 }
 
 .cta-btn {
@@ -477,7 +1050,7 @@ body {
   cursor: pointer;
   outline: none;
   position: relative;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, height 0.25s ease, font-size 0.25s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -502,7 +1075,7 @@ body {
 }
 
 .primary-cta:hover {
-  box-shadow: 0 14px 38px rgba(59, 130, 246, 0.6);
+  box-shadow: 0 14px 38px var(--btn-primary-glow);
 }
 
 .primary-cta:focus-visible {
@@ -527,11 +1100,14 @@ body {
   box-shadow: 0 0 0 3px var(--btn-primary-bg);
 }
 
-/* Right Hero Column & Floating Status Card: Anchored at x = 1269px, y_rel ≈ 396px */
+/* Right Hero Column & Floating Status Card + Information Panel */
 .hero-right-column {
   position: absolute;
   left: 1269px;
-  top: 300px;
+  top: 195px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .status-card-outer {
@@ -559,76 +1135,260 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: all 0.25s ease;
+  position: relative;
 }
 
 .status-row {
   font-size: 19px;
   font-weight: 500;
   color: #CBD5E1;
+  transition: font-size 0.25s ease;
 }
 
 .status-highlight {
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--text-primary);
+}
+
+.mode-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .mode-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: var(--text-primary);
   letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 15px;
+}
+
+.mode-glyph {
+  font-size: 11px;
 }
 
 /* ==========================================================================
-   Universal Empowerment Section (Spans full desktop width, y_rel ≈ 854px)
+   Active Profile Information Panel
+   ========================================================================== */
+.profile-info-card {
+  position: relative;
+  width: 350px;
+  border-radius: 24px;
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.info-card-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.info-card-tag {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--overlay-border-color);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2.5px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  line-height: 1.25;
+}
+
+.info-profile-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.info-profile-title {
+  font-size: 17.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.info-profile-summary {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.info-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 0 6px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.info-features-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-subtle);
+}
+
+.info-features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.info-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+.feature-icon {
+  font-size: 13px;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+
+.info-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.info-status-pill {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--overlay-border-color);
+  box-shadow: 0 0 8px var(--overlay-glow);
+}
+
+.info-reset-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  padding: 5px 12px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.info-reset-btn:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   Universal Empowerment Section
    ========================================================================== */
 
 .empowerment-section {
-  padding: 0 2px 60px 2px;
+  padding: 0 96px 80px 96px;
   width: 100%;
 }
 
 .empowerment-container {
   width: 100%;
+  margin: 0;
 }
 
 .section-header-block {
   margin-bottom: 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 0;
 }
 
 .section-title {
   position: relative;
   font-size: 40px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: var(--text-primary);
   letter-spacing: -0.01em;
-  display: inline-block;
+  display: block;
+  width: fit-content;
 }
 
 .section-subtitle {
   position: relative;
-  display: inline-block;
+  display: block;
   font-size: 20px;
   color: var(--text-muted);
-  margin-top: 10px;
+  width: fit-content;
+  transition: font-size 0.25s ease;
 }
 
-/* Three Feature Cards in One Row Spanning Desktop Width */
+/* Three Feature Cards in One Row */
 .feature-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 48px;
   width: 100%;
 }
 
 .feature-card {
   position: relative;
   background: var(--bg-feature-card);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 20px;
   padding: 38px 34px;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.2s ease, transform 0.2s ease, padding 0.25s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Feature cards line up nicely and balanced within the container */
+#feature-card-1,
+#feature-card-2,
+#feature-card-3 {
+  width: 100%;
 }
 
 .feature-card-title {
@@ -636,7 +1396,7 @@ body {
   display: inline-block;
   font-size: 24px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: var(--text-primary);
   margin-bottom: 16px;
 }
 
@@ -644,6 +1404,7 @@ body {
   font-size: 16px;
   line-height: 1.65;
   color: var(--text-muted);
+  transition: font-size 0.25s ease, line-height 0.25s ease;
 }
 
 /* ==========================================================================
@@ -662,7 +1423,7 @@ body {
 }
 
 /* ==========================================================================
-   Toast Notification for Demoware CTAs
+   Toast Notification for Demoware CTAs & Resets
    ========================================================================== */
 
 .demo-toast {
@@ -671,7 +1432,7 @@ body {
   left: 50%;
   transform: translateX(-50%) translateY(20px);
   background: rgba(15, 23, 42, 0.95);
-  border: 1px solid rgba(59, 130, 246, 0.4);
+  border: 1px solid var(--overlay-border-color);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: #F1F5F9;
@@ -721,12 +1482,21 @@ body {
     height: auto;
   }
 
+  .section-header-block {
+    padding-left: 0;
+  }
+
   .empowerment-section {
     padding: 40px 32px;
   }
 
   .feature-cards-grid {
     grid-template-columns: 1fr;
+  }
+
+  #feature-card-2,
+  #feature-card-3 {
+    transform: none;
   }
 }
 
@@ -759,7 +1529,8 @@ body {
     width: 100%;
   }
 
-  .status-card {
+  .status-card,
+  .profile-info-card {
     width: 100%;
   }
 }
@@ -894,4 +1665,3 @@ body.enforcing-active .inspection-overlay {
 }
 .overlay-card-title .overlay-badge { left: 8px; }
 .overlay-card-title .overlay-tag { right: 8px; }
-

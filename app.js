@@ -1,6 +1,7 @@
 /**
  * AURA — Pure Production Interface
- * State Machine & Interactions (without diagnostic overlays)
+ * State Machine & Interactions
+ * Simplified text, professional styling, no emojis
  */
 
 // Application State
@@ -10,30 +11,51 @@ const state = {
   clarifyEnabled: false,
 };
 
-// Profile Metadata
+// Profile Metadata with Simplified, Clear Explanations (No Emojis)
 const PROFILES = {
   voyager: {
     label: 'The Voyager (Color Blind)',
+    title: 'The Voyager (Color Blind)',
+    summary: 'Uses colors and shapes that are easier to see.',
+    features: [
+      'Uses blue and cyan shades that are easy to tell apart.',
+      'Uses labels, dots, and shapes so info is not based on color alone.',
+      'Uses clear shapes to make buttons easy to recognize.'
+    ]
   },
   beacon: {
     label: 'The Beacon (Low Vision)',
+    title: 'The Beacon (Low Vision)',
+    summary: 'Makes text, buttons, and spacing larger so the screen is easy to read.',
+    features: [
+      'Makes text larger with more line spacing for easy reading.',
+      'Makes buttons bigger so they are easy to see and click.',
+      'Adds bright yellow borders to highlight important items.'
+    ]
   },
   guardian: {
     label: 'The Guardian (Eye Strain)',
-  },
+    title: 'The Guardian (Eye Strain)',
+    summary: 'Reduces bright light and strong contrast to protect your eyes.',
+    features: [
+      'Uses a soft dark background instead of pure black.',
+      'Lowers bright glow effects and screen glare.',
+      'Uses soft white text to make reading comfortable.'
+    ]
+  }
 };
 
-// Copy Definitions
+// Simplified Copy Definitions
 const COPY = {
   normal: {
     headingLine1: 'The Guardian of',
     headingLine2: '<span class="gradient-accent">Accessibility.</span>',
-    body: 'Intelligence that lives between your windows. Aura identifies, cleans, and fixes digital barriers in real-time, bringing inclusive experiences to every application on your machine.',
+    body: 'Aura works across your apps to find and fix screen problems in real time. It makes every program easy for everyone to use.',
   },
   clarified: {
     headingLine1: 'The <span class="gradient-accent">Guardian</span> for',
     headingLine2: 'everyone.',
-    body: 'Aura helps you use any app easily. It finds and fixes hard parts on your screen in real-time, keeping your data private.',
+    body: 'Aura helps you use any app easily. It fixes screen problems in real time and keeps your data private.',
   },
 };
 
@@ -44,22 +66,30 @@ const DOM = {
   profileSelectedText: document.getElementById('profile-selected-text'),
   profileMenu: document.getElementById('profile-menu'),
   profileOptions: document.querySelectorAll('.profile-option-item'),
+  resetAccessBtn: document.getElementById('reset-access-btn'),
   enforceBtn: document.getElementById('enforce-btn'),
+  enforceStateIndicator: document.getElementById('enforce-state-indicator'),
   clarifyToggleBtn: document.getElementById('clarify-toggle-btn'),
+  clarifyStatusBadge: document.getElementById('clarify-status-badge'),
   heroHeading: document.getElementById('hero-heading'),
   headingLine1: document.getElementById('heading-line-1'),
   headingLine2: document.getElementById('heading-line-2'),
   heroBody: document.getElementById('hero-body'),
   ctaDownload: document.getElementById('cta-download'),
   ctaVision: document.getElementById('cta-vision'),
+  modeBadge: document.getElementById('mode-badge'),
   demoToast: document.getElementById('demo-toast'),
   demoToastMessage: document.getElementById('demo-toast-message'),
+  infoProfileTitle: document.getElementById('info-profile-title'),
+  infoProfileSummary: document.getElementById('info-profile-summary'),
+  infoFeaturesList: document.getElementById('info-features-list'),
+  infoResetBtn: document.getElementById('info-reset-btn'),
 };
 
 let toastTimeout = null;
 
 /**
- * Toast Notification for Demoware buttons
+ * Toast Notification for Demoware buttons & Reset confirmation
  */
 function showToast(message) {
   if (toastTimeout) clearTimeout(toastTimeout);
@@ -77,6 +107,10 @@ function renderClarifyState() {
   const isClarified = state.clarifyEnabled;
   DOM.clarifyToggleBtn.setAttribute('aria-checked', String(isClarified));
   
+  if (DOM.clarifyStatusBadge) {
+    DOM.clarifyStatusBadge.textContent = isClarified ? 'ON' : 'OFF';
+  }
+
   if (isClarified) {
     DOM.clarifyToggleBtn.classList.add('active');
     DOM.heroHeading.classList.add('clarified');
@@ -95,6 +129,28 @@ function renderClarifyState() {
 }
 
 /**
+ * Update Active Profile Information Panel
+ */
+function renderProfileInfo() {
+  const profileData = PROFILES[state.profile];
+  if (!profileData) return;
+
+  if (DOM.infoProfileTitle) {
+    DOM.infoProfileTitle.textContent = profileData.title;
+  }
+  if (DOM.infoProfileSummary) {
+    DOM.infoProfileSummary.textContent = profileData.summary;
+  }
+  if (DOM.infoFeaturesList) {
+    DOM.infoFeaturesList.innerHTML = profileData.features.map(text => `
+      <li class="info-feature-item">
+        <span class="feature-text">${text}</span>
+      </li>
+    `).join('');
+  }
+}
+
+/**
  * Update UI for Profile Selection
  */
 function renderProfileState() {
@@ -106,6 +162,8 @@ function renderProfileState() {
     opt.classList.toggle('selected', isSelected);
     opt.setAttribute('aria-selected', String(isSelected));
   });
+
+  renderProfileInfo();
 }
 
 /**
@@ -116,6 +174,16 @@ function renderEnforceState() {
   DOM.enforceBtn.setAttribute('aria-pressed', String(isEnforced));
   
   const labelEl = document.getElementById('enforce-btn-label') || DOM.enforceBtn;
+  if (DOM.enforceStateIndicator) {
+    DOM.enforceStateIndicator.textContent = isEnforced ? '●' : '○';
+  }
+
+  if (DOM.modeBadge) {
+    DOM.modeBadge.innerHTML = isEnforced 
+      ? '<span class="mode-glyph" aria-hidden="true">■</span> ENFORCING'
+      : '<span class="mode-glyph" aria-hidden="true">○</span> STANDBY';
+  }
+
   if (isEnforced) {
     DOM.enforceBtn.classList.add('active');
     document.body.classList.add('enforcing-active');
@@ -143,9 +211,38 @@ function closeDropdown() {
 }
 
 /**
+ * Reset Accessibility Settings to Default
+ */
+function resetAccessibility() {
+  state.profile = 'voyager';
+  state.enforcementEnabled = false;
+  state.clarifyEnabled = false;
+
+  closeDropdown();
+  renderProfileState();
+  renderClarifyState();
+  renderEnforceState();
+
+  showToast('Settings reset to default');
+}
+
+/**
  * Event Listeners Initialization
  */
 function setupEventListeners() {
+  // Reset Accessibility Buttons (Header and Info Card)
+  if (DOM.resetAccessBtn) {
+    DOM.resetAccessBtn.addEventListener('click', () => {
+      resetAccessibility();
+    });
+  }
+
+  if (DOM.infoResetBtn) {
+    DOM.infoResetBtn.addEventListener('click', () => {
+      resetAccessibility();
+    });
+  }
+
   // Enforcement Button Toggle
   DOM.enforceBtn.addEventListener('click', () => {
     state.enforcementEnabled = !state.enforcementEnabled;
@@ -201,11 +298,11 @@ function setupEventListeners() {
 
   // Demoware CTA Buttons
   DOM.ctaDownload.addEventListener('click', () => {
-    showToast('Demo only — asset not supplied');
+    showToast('Demo only — download not available');
   });
 
   DOM.ctaVision.addEventListener('click', () => {
-    showToast('Demo only — asset not supplied');
+    showToast('Demo only — video not available');
   });
 }
 

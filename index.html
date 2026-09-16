@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AURA — Universal Accessibility</title>
-  <meta name="description" content="Aura identifies, cleans, and fixes digital barriers in real-time, bringing inclusive experiences to every application on your machine.">
+  <meta name="description" content="Aura fixes screen problems in real time, making every app easy to use for everyone.">
   
   <!-- Google Fonts: Plus Jakarta Sans & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
 <body data-profile="voyager">
   <!-- Accessible Toast Notice for CTA Demoware -->
   <div id="demo-toast" class="demo-toast" role="status" aria-live="polite">
-    <span id="demo-toast-message">Demo only — asset not supplied</span>
+    <span id="demo-toast-message">Demo only — download not available</span>
   </div>
 
   <!-- Page Background Radial Glow -->
@@ -69,6 +69,24 @@
             </ul>
           </div>
 
+          <!-- Reset Accessibility Button -->
+          <button 
+            type="button" 
+            class="reset-access-btn" 
+            id="reset-access-btn"
+            aria-label="Reset accessibility settings"
+            title="Reset Accessibility (Restore default settings)"
+          >
+            <svg class="reset-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M15.312 11.424a5.5 5.5 0 01-9.201 2.466l-.312-.311h2.451a.75.75 0 000-1.5H4.5a.75.75 0 00-.75.75v3.75a.75.75 0 001.5 0v-2.138l.385.385a7 7 0 101.465-8.497.75.75 0 00-1.196.906 5.5 5.5 0 019.408 4.689z" clip-rule="evenodd" />
+            </svg>
+            <span class="reset-btn-label">Reset Accessibility</span>
+            <span class="inspection-overlay overlay-pill" aria-hidden="true">
+              <span class="overlay-badge">INTERACTION</span>
+              <span class="overlay-tag">Target Boosted</span>
+            </span>
+          </button>
+
           <!-- Enforcer Toggle Button -->
           <button 
             type="button" 
@@ -76,6 +94,7 @@
             id="enforce-btn"
             aria-pressed="false"
           >
+            <span class="enforce-state-indicator" id="enforce-state-indicator" aria-hidden="true">○</span>
             <span class="btn-label" id="enforce-btn-label">Simulate Aura Enforcer</span>
             <span class="inspection-overlay overlay-pill" aria-hidden="true">
               <span class="overlay-badge">INTERACTION</span>
@@ -94,9 +113,12 @@
               aria-label="Clarify Content"
             >
               <span class="toggle-track">
+                <span class="toggle-icon toggle-icon-off" aria-hidden="true">✕</span>
+                <span class="toggle-icon toggle-icon-on" aria-hidden="true">✓</span>
                 <span class="toggle-thumb"></span>
               </span>
               <span class="toggle-label-text">Clarify Content</span>
+              <span class="toggle-status-badge" id="clarify-status-badge" aria-hidden="true">OFF</span>
             </button>
             <span class="inspection-overlay overlay-pill" aria-hidden="true">
               <span class="overlay-badge">INTERACTION</span>
@@ -131,7 +153,7 @@
 
             <!-- Dynamic Paragraph -->
             <p class="hero-body" id="hero-body">
-              Intelligence that lives between your windows. Aura identifies, cleans, and fixes digital barriers in real-time, bringing inclusive experiences to every application on your machine.
+              Aura works across your apps to find and fix screen problems in real time. It makes every program easy for everyone to use.
             </p>
 
             <!-- CTA Button Row -->
@@ -153,18 +175,49 @@
             </div>
           </div>
 
-          <!-- Right Hero Column: Floating Status Card -->
+          <!-- Right Hero Column: Floating Status Card & Information Panel -->
           <div class="hero-right-column">
             <div class="status-card-outer" id="status-card-outer">
               <div class="status-card" id="status-card">
                 <div class="status-row">Scanning: <span class="status-highlight">Notepad.exe</span></div>
                 <div class="status-row">Fixes Applied: <span class="status-highlight">12</span></div>
-                <div class="status-row mode-row">Mode: <span class="mode-badge">ENFORCING</span></div>
+                <div class="status-row mode-row">Mode: <span class="mode-badge" id="mode-badge"><span class="mode-glyph" aria-hidden="true">■</span> ENFORCING</span></div>
                 <span class="inspection-overlay overlay-card" aria-hidden="true">
                   <span class="overlay-badge">UI ELEMENT</span>
                   <span class="overlay-tag">Optimized</span>
                 </span>
               </div>
+            </div>
+
+            <!-- Active Profile Information Panel -->
+            <div class="profile-info-card" id="profile-info-panel" role="region" aria-label="Active Accessibility Profile Information">
+              <div class="info-card-header">
+                <div class="info-card-badge-row">
+                  <span class="info-card-tag">PROFILE INSIGHT</span>
+                </div>
+                <h3 class="info-profile-title" id="info-profile-title">The Voyager (Color Blind)</h3>
+                <p class="info-profile-summary" id="info-profile-summary">
+                  Uses colors and shapes that are easier to see.
+                </p>
+              </div>
+              <div class="info-card-body">
+                <div class="info-features-label">Active Changes:</div>
+                <ul class="info-features-list" id="info-features-list">
+                  <!-- Dynamically populated -->
+                </ul>
+              </div>
+              <div class="info-card-footer">
+                <span class="info-status-pill">
+                  <span class="status-dot"></span> Active Profile
+                </span>
+                <button type="button" class="info-reset-btn" id="info-reset-btn" aria-label="Reset accessibility profile to default">
+                  Reset Profile
+                </button>
+              </div>
+              <span class="inspection-overlay overlay-card" aria-hidden="true">
+                <span class="overlay-badge">UI ELEMENT</span>
+                <span class="overlay-tag">Optimized</span>
+              </span>
             </div>
           </div>
         </div>
@@ -181,7 +234,7 @@
               </span>
             </h2>
             <p class="section-subtitle" id="section-subtitle">
-              <span>For the web, legacy apps, and everything in between.</span>
+              <span>Works on websites, older apps, and everyday programs.</span>
               <span class="inspection-overlay overlay-subtitle" aria-hidden="true">
                 <span class="overlay-badge">CONTENT BOX</span>
                 <span class="overlay-tag">Readable</span>
@@ -205,7 +258,7 @@
                 </span>
               </h3>
               <p class="feature-card-desc">
-                Auto-corrects low contrast, identifies unlabelled icons, and enlarges tiny touch targets.
+                Fixes low contrast, adds missing button labels, and makes small buttons easier to click.
               </p>
             </div>
 
@@ -223,7 +276,7 @@
                 </span>
               </h3>
               <p class="feature-card-desc">
-                A smart, localized TTS engine that describes the screen as you move, without the noise of traditional screen readers.
+                Reads your screen aloud as you move, giving you clear spoken descriptions without extra clutter.
               </p>
             </div>
 
@@ -241,7 +294,7 @@
                 </span>
               </h3>
               <p class="feature-card-desc">
-                100% On-device AI. Your screen data never leaves your computer. Privacy is an accessibility right.
+                Runs completely on your device. Your screen data never leaves your computer, keeping your work private.
               </p>
             </div>
           </div>
